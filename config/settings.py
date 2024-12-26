@@ -28,22 +28,14 @@ DJANGO_APPS = [
 ADDITIONAL_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_framework_simplejwt',
 ]
 
 OWN_APPS = [
-    'threads',
-    'users',
+    'accounts'
 ]
 
 
 INSTALLED_APPS = DJANGO_APPS + ADDITIONAL_APPS + OWN_APPS
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-}
 
 
 MIDDLEWARE = [
