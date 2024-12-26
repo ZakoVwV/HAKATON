@@ -31,7 +31,8 @@ ADDITIONAL_APPS = [
 ]
 
 OWN_APPS = [
-    'accounts'
+    'accounts',
+    'category',
 ]
 
 
