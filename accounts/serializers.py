@@ -26,5 +26,35 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.set_password(validated_data.get('password'))
         user.save()
         return user
-    
+
+
+class LoginSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    password = serializers.CharField()
+
+    def validate(self, attrs):
+        username = attrs.get('username')
+        password = attrs.get('password')
+        request = self.context.get('request')
+
+        if username and password:
+            user = authenticate(
+                username=username,
+                password=password,
+                request=request
+            )
+            if not user:
+                raise serializers.ValidationError(
+                    'Неверный username или password'
+                )
+        else:
+            raise serializers.ValidationError(
+                'Вы забыли ввести username или password'
+            )
+        attrs['user'] = user
+        return attrs
+
+
+
+
 
