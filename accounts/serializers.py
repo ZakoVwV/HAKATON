@@ -3,7 +3,6 @@ from django.contrib.auth import authenticate
 
 from rest_framework import serializers
 
-
 class RegisterSerializer(serializers.ModelSerializer):
     first_name = serializers.CharField(required=True)
     last_name = serializers.CharField(required=True)
@@ -55,6 +54,9 @@ class LoginSerializer(serializers.Serializer):
         return attrs
 
 
-
+class UserListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'first_name', 'last_name']
 
 

@@ -3,10 +3,11 @@ from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework import permissions, generics
+from rest_framework import permissions
 
 from django.contrib.auth.models import User
 
-from .serializers import RegisterSerializer, LoginSerializer
+from .serializers import RegisterSerializer, LoginSerializer, UserListSerializer
 
 
 class UserRegisterView(APIView):
@@ -41,3 +42,10 @@ class LogoutView(APIView):
         user = request.user
         Token.objects.filter(user=user).delete()
         return Response('Успешно вышли с аккаунта')
+
+
+
+class UserListView(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserListSerializer
+    permission_classes = [permissions.IsAdminUser]
