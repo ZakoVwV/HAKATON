@@ -31,10 +31,12 @@ ADDITIONAL_APPS = [
 ]
 
 OWN_APPS = [
-    'accounts',
+    'account',
     'category',
+    'post',
+    'comments',
+    'likes',
 ]
-
 
 INSTALLED_APPS = DJANGO_APPS + ADDITIONAL_APPS + OWN_APPS
 
@@ -49,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'config.urls'
+ROOT_URLCONF = 'config.urls.py'
 
 TEMPLATES = [
     {
