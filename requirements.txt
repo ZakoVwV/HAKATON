@@ -2,3 +2,5 @@ djangorestframework
 python-decouple
 psycopg2-binary
 Pillow
+
+d
